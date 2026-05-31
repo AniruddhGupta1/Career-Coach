@@ -331,7 +331,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Init ──
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+groq_api_key = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+client = Groq(api_key=groq_api_key)
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
